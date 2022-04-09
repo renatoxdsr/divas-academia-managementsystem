@@ -1,0 +1,41 @@
+{
+  "instructors": [
+    {
+      "avatar_url": "http://www.camilacabello.com",
+      "name": "camila cabello",
+      "birth": "1997-03-17",
+      "gender": "F",
+      "services": "cantora"
+    },
+    {
+      "avatar_url": "http://www.renatorodrigues.com",
+      "name": "Renato Xavier",
+      "birth": "2022-04-09",
+      "gender": "M",
+      "services": "developer engeneer"
+    },
+    {
+      "avatar_url": "http://www.renatorodrigues.com",
+      "name": "Renato Rodrigues",
+      "birth": "2022-05-05",
+      "gender": "M",
+      "services": "Full stack developer"
+    },
+    {
+      "avatar_url": "http://www.renatorodrigues.com",
+      "name": "Renato Xavier da Silva Rodrigues",
+      "birth": "2022-06-06",
+      "gender": "M",
+      "services": "Full stack developer",
+      "created_at": 1649535761959
+    },
+    {
+      "avatar_url": "http://www.renatorodrigues.com",
+      "name": "Renato Xavier da Silva Rodrigues",
+      "birth": 1653004800000,
+      "gender": "M",
+      "services": "Full stack developer",
+      "created_at": 1649536185302
+    }
+  ]
+}
