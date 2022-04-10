@@ -14,7 +14,18 @@ exports.show = function(req, res) {
     });
 
     if (!foundInstructor) return res.send("Instructor not found")
-    return res.render("show", {instructor : foundInstructor})
+    
+    //creating a variale instructor 
+    const instructor = {
+        //spread Operator
+        ...foundInstructor,
+        age: "",
+        gender: "",
+        services: "",
+        created_at: "",
+
+    }
+    return res.render("show", {instructor})
 }
 
 //function to POST
