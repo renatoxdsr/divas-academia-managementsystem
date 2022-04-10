@@ -3,6 +3,20 @@ const fs = require('fs');
 //call a data.jason to know lose the sata
 const data = require('./data.json');
 
+
+//function to show(get something)
+exports.show = function(req, res) {
+    //req.params
+    const {id} = req.params;
+    
+    const foundInstructor = data.instructors.find(function(instructor){
+        return instructor.id == id
+    });
+
+    if (!foundInstructor) return res.send("Instructor not found")
+    return res.send(foundInstructor)
+}
+
 //function to POST
 //export post
 exports.post = function(req, res){
