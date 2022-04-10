@@ -20,8 +20,11 @@ exports.show = function(req, res) {
         //spread Operator
         ...foundInstructor,
         age: "",
+        //print the name (masculine) instead of just "M"
+        //creating in nunjucks/html
         gender: "",
-        services: "",
+        //break the string in eanch ',' common appeared
+        services: foundInstructor.services.split(","),
         created_at: "",
 
     }
