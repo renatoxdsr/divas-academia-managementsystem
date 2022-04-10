@@ -1,3 +1,13 @@
 {
-  "instructors": []
+  "instructors": [
+    {
+      "id": 1,
+      "name": "Renato Rodrigues",
+      "gender": "M",
+      "avatar_url": "http://www.renatorodrigues.com",
+      "services": "Full stack developer",
+      "birth": 1649548800000,
+      "created_at": 1649608252688
+    }
+  ]
 }
