@@ -9,23 +9,59 @@ exports.post = function(req, res){
     //req.query
     //req.body
     //creating a constructor
+    //here was made the validation
     const keys = Object.keys(req.body)
+
     //validation if all the blanks are filled
     // to send to DB
+    //here was made the validation
     for(key of keys){
       if (req.body[key]== ""){
         return res.send('Please, fill all the fileds')
     }} 
 
-    //change for timestamp method to understand data as we know
+    //here was made the data treatment
+
+    /* //change for timestamp method to understand data as we know
     //using parse to transform milesecs in data
     req.body.birth = Date.parse(req.body.birth)
+
+    //Creating a PK in a json doc
+    req.body.id = Number(data.instructors.length + 1);
+
     //creating data time
     // counting when this data as created 
     req.body.created_at = Date.now();
     //[{...}]
+    //here was made the organization of the data whcih i want to push to my data.json
+    const {avatar_url, birth, created_at, id, name, service, gender} = req.body */
+    
+    //new treatment
+    //using let because it allows to change the value in the next variables
+    let {avatar_url, birth, name, services, gender} = req.body
+    //because we have to create id and create_at yet we do not use it in this let
+    //do not need to use req.body anymore, because it was already explict in the let calling req.body
+    birth = Date.parse(birth)
+    // creating a const because id and created_at has to be created now
+    const created_at = Date.now()
+    const id = Number(data.instructors.length + 1)
+
+
+    data.instructors.push({
+        id,
+        name,
+        gender,
+        avatar_url, 
+        services,
+        birth,
+        created_at,
+    })
+    //what is the req.body?
+    //distructuring the req.body
+
+
     //add something in an Array - PUSH
-    data.instructors.push(req.body) //[{}] in data.json
+    //data.instructors.push(req.body) //[{}] in data.json
 
     //to make the json file to organize it in each item
     // using three condiction first-the file
