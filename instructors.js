@@ -2,7 +2,8 @@
 const fs = require('fs');
 //call a data.jason to know lose the sata
 const data = require('./data.json');
-
+//because it is an object you have to put in {}
+const {age} = require('./date')
 
 //function to show(get something)
 exports.show = function(req, res) {
@@ -19,7 +20,8 @@ exports.show = function(req, res) {
     const instructor = {
         //spread Operator
         ...foundInstructor,
-        age: "",
+        //bring age function to be shown in instructors id page
+        age: age(foundInstructor.birth),
         //print the name (masculine) instead of just "M"
         //creating in nunjucks/html
         gender: "",
