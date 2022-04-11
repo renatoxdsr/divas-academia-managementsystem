@@ -3,7 +3,7 @@ const fs = require('fs');
 //call a data.jason to know lose the sata
 const data = require('./data.json');
 //because it is an object you have to put in {}
-const {age} = require('./date')
+const {age, date} = require('./date')
 
 //function to show(get something)
 exports.show = function(req, res) {
@@ -118,7 +118,8 @@ exports.edit = function(req, res){
 
     if (!foundInstructor) return res.send("Instructor not found")
 
-
+    date(foundInstructor.birth)
+    
     return res.render("edit", {instructor : foundInstructor})}
 //transforming a notation in JSON
 

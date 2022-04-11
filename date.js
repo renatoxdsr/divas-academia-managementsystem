@@ -32,6 +32,23 @@ module.exports = {
 
         //you have to return outside of the condition
         return age
+    },
+    date: function(timestamp){
+        const date = new Date(timestamp)
+        //year
+        const year = date.getFullYear()
+
+        //mm
+        const month = date.getMonth()
+
+        // dd
+        const day = date.getDate()
+
+        //return yyyy-mm-dd
+
+        console.log(`${year}-${month}-${day}`)
+
+
     }
 }
 
