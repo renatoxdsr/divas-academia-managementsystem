@@ -35,8 +35,7 @@ exports.show = function(req, res) {
     return res.render("show", {instructor})
 }
 
-//function to POST
-//export post
+//function to POST (create)
 exports.post = function(req, res){
     //req.query
     //req.body
@@ -108,6 +107,19 @@ exports.post = function(req, res){
     return res.send(req.body)
 };
 
+//Function to edit
+exports.edit = function(req, res){
+    //req.params //passando os parametros
+    const {id} = req.params;
+    
+    const foundInstructor = data.instructors.find(function(instructor){
+        return instructor.id == id
+    });
+
+    if (!foundInstructor) return res.send("Instructor not found")
+
+
+    return res.render("edit", {instructor : foundInstructor})}
 //transforming a notation in JSON
 
 //function to UPDATE

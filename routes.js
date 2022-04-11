@@ -19,9 +19,7 @@ routes.get('/instructors/create', function(req, res){
 //getting the instructor from the id in data.json
 routes.get('/instructors/:id', instructors.show)
 
-routes.get('/instructors/:id/edit', function(req, res){
-    return res.render("edit")
-})
+routes.get('/instructors/:id/edit', instructors.edit)
 
 routes.post("/instructors", instructors.post)
 
