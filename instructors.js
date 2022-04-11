@@ -27,7 +27,9 @@ exports.show = function(req, res) {
         gender: "",
         //break the string in eanch ',' common appeared
         services: foundInstructor.services.split(","),
-        created_at: "",
+        //creating the date in datetimeformat 00/00/0000 
+        //Formatting date with Intl from Javascript
+        created_at: new Intl.DateTimeFormat("pt-BR").format(foundInstructor.created_at),
 
     }
     return res.render("show", {instructor})
