@@ -4,12 +4,15 @@
     <!---HTML5 does not accept method as PUT, just POST & GET-->
     <!---Use override-->
     <!--install method-override-->
-    <form id="card" method="POST" action="/instructors?_method=PUT">
-        <section 
-            class="avatar" 
-            style="width: 400px; height: 600px; background: url(https://source.unsplash.com/collection/79439942/200) no-repeat center center / cover "></section>
-        <section class="details">
+<div id ="card">
+    <section 
+        class="avatar" 
+        style="width: 400px; height: 600px; 
+        background: url(https://source.unsplash.com/collection/79439942/200) no-repeat center center / cover ">
+    </section>
 
+    <section class="details">
+        <form method="POST" action="/instructors?_method=PUT">
             <h3>Editar Instrutor</h3>
 
             {% include 'fields.njk'%}
@@ -17,7 +20,15 @@
             <input type="hidden" 
                 name="id" 
                 value={{instructor.id}}>
-        </section>
-    </form>
+        
+        </form>
 
+        <form id="form-delete" method="POST" action="/instructors?_method=delete">
+            <input type="hidden" name="id" value="{{instructor.id}}">
+            <button type="submit">Deletar</button>
+        </form>
+    </section>
+
+</div>
+    
 {% endblock  content %}

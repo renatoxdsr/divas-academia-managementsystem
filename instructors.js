@@ -126,7 +126,7 @@ exports.edit = function(req, res){
     
     return res.render("edit", {instructor })}
 
-// Function to PUT
+// Function to PUT (UPDATE)
 
 exports.put = function(req, res) {
     const {id} = req.body;
@@ -159,7 +159,20 @@ exports.put = function(req, res) {
 
 //transforming a notation in JSON
 
-//function to UPDATE
-
-
 //Function to DELETE
+
+exports.delete = function(req, res){
+    const {id} = req.body
+
+    const filteredInstructors = data.instructors.filter(function(instructor){
+        return instructor.id != id
+    })
+
+    data.instructors = filteredInstructors
+
+    fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err){
+        if(err) return res.send("Write file error!")
+
+        return res.redirect("/instructors")
+    })
+}
