@@ -2,6 +2,8 @@ const express = require('express');
 const nunjucks = require('nunjucks');
 //calling the routes 
 const routes = require("./routes");
+//call the method override
+const methodOverride = require('method-override')
 
 const server = express();
 
@@ -9,6 +11,9 @@ const server = express();
 // middleware - intercepts point a and b
 server.use(express.urlencoded({extended : true})) 
 server.use(express.static('public'))
+//setting override
+//Method Override overwrite the type of method you are using
+server.use(methodOverride('_method')) //ypu have to put the methodOverride before the routes -- remeber the verbs
 server.use(routes)
 
 server.set("view engine", "njk")

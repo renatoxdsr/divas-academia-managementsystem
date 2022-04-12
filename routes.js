@@ -23,7 +23,15 @@ routes.get('/instructors/:id/edit', instructors.edit)
 
 routes.post("/instructors", instructors.post)
 
-routes.get('/', function(req, res){
+//HTTP - VERBS
+//GET: Receive RESOURCE
+//POST: Create or Save a New RESOURCE with sent datas
+//PUT: Update RESOURCE
+//DELETE: Delete RESOURCE
+
+routes.put("/instructors", instructors.put)
+
+routes.get('/members', function(req, res){
     return res.redirect("members");
 })
 module.exports = routes;
