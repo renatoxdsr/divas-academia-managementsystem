@@ -35,18 +35,14 @@ module.exports = {
     },
     date: function(timestamp){
         const date = new Date(timestamp)
-        //year
-        const year = date.getFullYear()
-
-        //mm
-        const month = date.getMonth()
-
-        // dd
-        const day = date.getDate()
+        
+        const year = date.getUTCFullYear()
+        const month = `0${date.getUTCMonth() + 1}`.slice(-2)
+        const day = `0${date.getUTCDate()}`.slice(-2)
 
         //return yyyy-mm-dd
 
-        console.log(`${year}-${month}-${day}`)
+        return`${year}-${month}-${day}`
 
 
     }

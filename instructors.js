@@ -118,9 +118,13 @@ exports.edit = function(req, res){
 
     if (!foundInstructor) return res.send("Instructor not found")
 
-    date(foundInstructor.birth)
+    const instructor = {
+        ...foundInstructor,
+        birth: date(foundInstructor.birth)
+    }
     
-    return res.render("edit", {instructor : foundInstructor})}
+    
+    return res.render("edit", {instructor })}
 //transforming a notation in JSON
 
 //function to UPDATE
