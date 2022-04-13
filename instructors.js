@@ -5,6 +5,11 @@ const data = require('./data.json');
 //because it is an object you have to put in {}
 const {age, date} = require('./date')
 
+exports.index = function(req, res) {
+
+    return res.render("index", {instructors : data.instructors})
+}
+
 //function to show(get something)
 exports.show = function(req, res) {
     //req.params
