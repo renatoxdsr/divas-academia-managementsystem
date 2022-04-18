@@ -12,7 +12,7 @@ routes.get('/instructors', instructors.index);
 
 
 routes.get('/instructors/create', function(req, res){
-    return res.render("create")
+    return res.render("instructors/create")
 })
 
 //getting the instructor from the id in data.json

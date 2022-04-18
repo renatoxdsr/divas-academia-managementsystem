@@ -26,7 +26,7 @@ nunjucks.configure("views", {
 })
 
 
-server.get("/", function(req, res){
+/* server.get("/", function(req, res){
     const about = {
         avatar_url: "https://avatars.githubusercontent.com/u/59875607?v=4",
         name: "Renato Xavier",
@@ -47,14 +47,14 @@ server.get("/", function(req, res){
     // passar about para mostrar o const data
     //para mostrar a variavel data 
 })
-
-server.get("/portfolio", function(req, res){
+ */
+/* server.get("/portfolio", function(req, res){
     //enviar os dados do back-end para o front-end
     //enviar od dados dos videos no data.js para a pagina portfolio
     return res.render("portfolio", {itens : videos})
-})
+}) */
 
-server.get("/video", function(req, res) {
+/* server.get("/video", function(req, res) {
     const id = req.query.id;
 
     //fazer um filtro do data.js pegando cada video
@@ -65,13 +65,13 @@ server.get("/video", function(req, res) {
         /* if(video.id == id) {
             return true
         } */
-    })
+ /*    })
 
     if (!video){
         return res.send("video not found")
     }
     return res.render("video", { item: video});
-})
+}) */ 
 
 server.listen(5000, function(){
     console.log("Server is running")

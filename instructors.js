@@ -7,7 +7,7 @@ const {age, date} = require('./date')
 
 exports.index = function(req, res) {
 
-    return res.render("index", {instructors : data.instructors})
+    return res.render("instructors/index", {instructors : data.instructors})
 }
 
 //function to show(get something)
@@ -37,7 +37,7 @@ exports.show = function(req, res) {
         created_at: new Intl.DateTimeFormat("pt-BR").format(foundInstructor.created_at),
 
     }
-    return res.render("show", {instructor})
+    return res.render("instructors/show", {instructor})
 }
 
 //function to POST (create)
@@ -129,7 +129,7 @@ exports.edit = function(req, res){
     }
     
     
-    return res.render("edit", {instructor })}
+    return res.render("instructors/edit", {instructor })}
 
 // Function to PUT (UPDATE)
 

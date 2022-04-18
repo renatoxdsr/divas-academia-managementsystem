@@ -199,16 +199,24 @@ a.button {
 
 #form-delete button[type="submit"] {
     margin-top: 8px;
-    background-color: lightcoral;
-    display: inline-block
+    background-color: lightcoral
 
 }
 
 /*INDEX INSTRUCTORS */
+.card{
+    background-color: white;
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    position: absolute;
+}
+
 .table-container {
-    display: block;
+    display: inline-block;
     padding: 40px;
     box-sizing: border-box;
+
 
 }
 
