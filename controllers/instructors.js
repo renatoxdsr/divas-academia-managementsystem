@@ -1,15 +1,14 @@
 //working with json documents
 const fs = require('fs');
 //call a data.jason to know lose the sata
-const data = require('./data.json');
+const data = require('../data.json');
 //because it is an object you have to put in {}
-const {age, date} = require('./date')
+const {age, date} = require('../date')
 
 exports.index = function(req, res) {
 
     return res.render("instructors/index", {instructors : data.instructors})
 }
-
 //function to show(get something)
 exports.show = function(req, res) {
     //req.params
@@ -39,7 +38,10 @@ exports.show = function(req, res) {
     }
     return res.render("instructors/show", {instructor})
 }
-
+//Function tpo CREATE
+exports.create = function(req, res) {
+    return res.render('instructors/create')
+}
 //function to POST (create)
 exports.post = function(req, res){
     //req.query
@@ -110,8 +112,7 @@ exports.post = function(req, res){
     })
 
     return res.send(req.body)
-};
-
+}
 //Function to edit
 exports.edit = function(req, res){
     //req.params //passando os parametros
@@ -129,10 +130,9 @@ exports.edit = function(req, res){
     }
     
     
-    return res.render("instructors/edit", {instructor })}
-
+    return res.render("instructors/edit", {instructor })
+}
 // Function to PUT (UPDATE)
-
 exports.put = function(req, res) {
     const {id} = req.body;
     let index = 0
@@ -162,11 +162,7 @@ exports.put = function(req, res) {
     })
 
 }
-
-//transforming a notation in JSON
-
 //Function to DELETE
-
 exports.delete = function(req, res){
     const {id} = req.body
 
