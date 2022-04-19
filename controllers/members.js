@@ -9,42 +9,10 @@ exports.index = function(req, res) {
 
     return res.render("members/index", {members : data.members})
 }
-
-//function to show(get something)
-exports.show = function(req, res) {
-    //req.params
-    const {id} = req.params;
-    
-    const foundMember = data.members.find(function(member){
-        return member.id == id
-    });
-
-    if (!foundMember) return res.send("Member not found")
-    
-    //creating a variale member 
-    const member = {
-        //spread Operator
-        ...foundMember,
-        //bring age function to be shown in members id page
-        age: age(foundMember.birth),
-        //print the name (masculine) instead of just "M"
-        //creating in nunjucks/html
-        gender: "",
-        //break the string in eanch ',' common appeared
-        services: foundMember.services.split(","),
-        //creating the date in datetimeformat 00/00/0000 
-        //Formatting date with Intl from Javascript
-        created_at: new Intl.DateTimeFormat("pt-BR").format(foundMember.created_at),
-
-    }
-    return res.render("members/show", {member})
-}
 //Function to CREATE
-
 exports.create = function(req, res) {
     return res.render('members/create')
 }
-
 //function to POST 
 exports.post = function(req, res){
     //req.query
@@ -124,7 +92,36 @@ exports.post = function(req, res){
 
     return res.send(req.body)
 };
+//function to show(get something)
+exports.show = function(req, res) {
+    //req.params
+    const {id} = req.params;
+    
+    const foundMember = data.members.find(function(member){
+        return member.id == id
+    });
 
+    if (!foundMember) return res.send("Member not found")
+    
+    //creating a variale member 
+    const member = {
+        //spread Operator
+        ...foundMember,
+        //bring age function to be shown in members id page
+        age: age(foundMember.birth),
+        //print the name (masculine) instead of just "M"
+        //creating in nunjucks/html
+        gender: "",
+        //break the string in eanch ',' common appeared
+        /* services: foundMember.services.split(","), */
+        //creating the date in datetimeformat 00/00/0000 
+        //Formatting date with Intl from Javascript
+        /* created_at: new Intl.DateTimeFormat("pt-BR").format(foundMember.created_at), */
+
+        
+    }
+    return res.render("members/show", {member})
+}
 //Function to edit
 exports.edit = function(req, res){
     //req.params //passando os parametros
@@ -142,10 +139,9 @@ exports.edit = function(req, res){
     }
     
     
-    return res.render("members/edit", {member })}
-
+    return res.render("members/edit", {member })
+}
 // Function to PUT (UPDATE)
-
 exports.put = function(req, res) {
     const {id} = req.body;
     let index = 0
@@ -175,9 +171,7 @@ exports.put = function(req, res) {
     })
 
 }
-
 //Function to DELETE
-
 exports.delete = function(req, res){
     const {id} = req.body
 

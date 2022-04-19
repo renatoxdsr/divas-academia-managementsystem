@@ -10,8 +10,13 @@
         <h3>Detalhes</h3>
 
         <div class="item">
-            <div>Instrutor</div>
+            <div>Membro</div>
             <div>{{member.name}}</div>
+        </div>
+        
+        <div class="item">
+            <div>Email</div>
+            <div>{{member.email}}</div>
         </div>
 
         <div class="item">
@@ -23,19 +28,20 @@
             <div>Sexo</div>
             <div>{{"Masculino" if member.gender == "M" else "Feminino"}}</div>
         </div>
-
+        
         <div class="item">
-            <div>Acompanhamento</div>
-            <div>
-                {% for service in member.services%}
-                <span>{{service}}</span>
-                {% endfor%}
-            </div>
+            <div>Tipo Sanguineo</div>
+            <div>{{member.blood}}</div>
         </div>
 
         <div class="item">
-            <div>Desde</div>
-            <div>{{member.created_at}}</div>
+            <div>Peso (kg)</div>
+            <div>{{member.weight}}</div>
+        </div>
+
+        <div class="item">
+            <div>Altura (cm)</div>
+            <div>{{member.height}}</div>
         </div>
 
         <a href="/members/{{member.id}}/edit" class="button">Editar</a>
