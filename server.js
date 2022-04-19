@@ -25,7 +25,9 @@ nunjucks.configure("views", {
     noCache: true
 })
 
-
+server.listen(5000, function(){
+    console.log("Server is running")
+})
 /* server.get("/", function(req, res){
     const about = {
         avatar_url: "https://avatars.githubusercontent.com/u/59875607?v=4",
@@ -73,6 +75,3 @@ nunjucks.configure("views", {
     return res.render("video", { item: video});
 }) */ 
 
-server.listen(5000, function(){
-    console.log("Server is running")
-})

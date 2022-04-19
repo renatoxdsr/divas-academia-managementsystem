@@ -16,7 +16,7 @@ exports.show = function(req, res) {
     const {id} = req.params;
     
     const foundMember = data.members.find(function(member){
-        return id == member.id
+        return member.id == id
     });
 
     if (!foundMember) return res.send("Member not found")
@@ -79,23 +79,31 @@ exports.post = function(req, res){
     
     //new treatment
     //using let because it allows to change the value in the next variables
-    let {avatar_url, birth, name, services, gender} = req.body
+    let {avatar_url, 
+        birth, 
+        name, 
+        email,
+        blood,
+        weight,
+        height,
+        gender} = req.body
     //because we have to create id and create_at yet we do not use it in this let
     //do not need to use req.body anymore, because it was already explict in the let calling req.body
-    birth = Date.parse(birth)
+    birth = Date.parse(req.body.birth)
     // creating a const because id and created_at has to be created now
-    const created_at = Date.now()
-    const id = Number(data.members.length + 1)
+    /* const created_at = Date.now() */
 
+    let id = 1
+    const lastId = data.members[data.members.length - 1]
+    
+    if(lastId) {
+        id = lastId.id + 1
+    }
 
     data.members.push({
+        ...req.body,
         id,
-        name,
-        gender,
-        avatar_url, 
-        services,
         birth,
-        created_at,
     })
     //what is the req.body?
     //distructuring the req.body
@@ -111,7 +119,7 @@ exports.post = function(req, res){
     fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err){
         if(err) return res.send("write file error");
 
-        return res.redirect("/members")
+        return res.redirect(`/members/${id}`)
     })
 
     return res.send(req.body)
