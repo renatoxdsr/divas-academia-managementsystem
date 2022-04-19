@@ -69,9 +69,9 @@ exports.post = function(req, res){
     }
 
     data.members.push({
-        ...req.body,
         id,
         birth,
+        ...req.body,
     })
     //what is the req.body?
     //distructuring the req.body
@@ -108,7 +108,7 @@ exports.show = function(req, res) {
         //spread Operator
         ...foundMember,
         //bring age function to be shown in members id page
-        birth: date(foundMember.birth),
+        birth: date(foundMember.birth).iso,
         //print the name (masculine) instead of just "M"
         //creating in nunjucks/html
         gender: "",
@@ -117,6 +117,7 @@ exports.show = function(req, res) {
         //creating the date in datetimeformat 00/00/0000 
         //Formatting date with Intl from Javascript
         /* created_at: new Intl.DateTimeFormat("pt-BR").format(foundMember.created_at), */
+        
 
         
     }
@@ -136,6 +137,7 @@ exports.edit = function(req, res){
     const member = {
         ...foundMember,
         birth: date(foundMember.birth).iso
+        
     }
     
     
@@ -147,19 +149,20 @@ exports.put = function(req, res) {
     let index = 0
 
     const foundMember = data.members.find(function(member, foundIndex){
-        if(id == member.id ){
+        if(member.id == id ){
             index = foundIndex
             return true
         }
     });
 
-    if (!foundMember) return res.send("Member not found")
+    if (!foundMember) return res.send("Member not found!")
 
     const member = {
+        id: Number(req.body.id),
         ...foundMember,
         ...req.body,
         birth: Date.parse(req.body.birth),
-        id: Number(req.body.id)
+       
     }
 
     data.members[index] = member

@@ -1,15 +1,26 @@
 {
   "members": [
     {
+      "id": "1",
       "avatar_url": "http://www.renatorodrigues.com",
       "name": "camila cabello",
       "email": "jofernandes47@gmail.com",
       "birth": 858556800000,
       "gender": "F",
-      "blood": "AB-",
+      "blood": "A+",
       "weight": "56",
-      "height": "153",
-      "id": 1
+      "height": "153"
+    },
+    {
+      "id": "2",
+      "birth": 904780800000,
+      "avatar_url": "http://www.renatorodrigues.com",
+      "name": "Renato Rodrigues",
+      "email": "renatoxavier.ds@gmail.com",
+      "gender": "M",
+      "blood": "AB+",
+      "weight": "80",
+      "height": "190"
     }
   ],
   "instructors": [
