@@ -6,17 +6,28 @@
                 name="avatar_url"
                 placeholder="http://"
                 {# Creating value, to feel the placeholder #}
-                value="{{instructor.avatar_url}}">
+                value="{{member.avatar_url}}">
             </div>
         </div>
         <div class="item">
-            <div>Instrutor</div>
+            <div>Nome</div>
             <div>
                 <input 
                 type="text" 
                 name="name"
                 placeholder="nome e sobrenome"
-                value="{{instructor.name}}">
+                value="{{member.name}}">
+            </div>
+        </div>
+
+        <div class="item">
+            <div>Email</div>
+            <div>
+                <input 
+                type="text" 
+                name="email"
+                placeholder="email@domain.com"
+                value="{{member.name}}">
             </div>
         </div>
 
@@ -26,7 +37,7 @@
                 <input 
                 type="date"
                 name="birth"
-                value="{{instructor.birth}}">
+                value="{{member.birth}}">
             </div>
         </div>
 
@@ -35,30 +46,51 @@
             <div>
                 <span><input type="radio"
                 name="gender" value="M" 
-                {% if instructor.gender == "M"%}
+                {% if member.gender == "M"%}
                 checked
                 {% endif %}>
                 Masculino</span>
                 <span><input type="radio"
                 name="gender" value="F"
-                {% if instructor.gender == "F"%}
+                {% if member.gender == "F"%}
                 checked
                 {% endif %}
                 >Feminino</span>
 
             </div>
         </div>
-
         <div class="item">
-            <div>Área de Atuação</div>
+            <div>Tipo Sanguineo</div>
             <div>
-                <input 
-                type="text"
-                name="services"
-                placeholder="Separe os serviços prestados por virgula ';'"
-                value="{{instructor.services}}"
+                <select name="blood" id="">
+                    <option value="A1">A+</option>
+                    <option value="A0">A-</option>
+                    <option value="B1">B+</option>
+                    <option value="B0">B-</option>
+                    <option value="AB1">AB+</option>
+                    <option value="AB0">AB-</option>
+                    <option value="O1">O+</option>
+                    <option value="O0">O-</option>
+                </select>
             </div>
         </div>
-
+        <div class="item">
+            <div>Peso (kg)</div>
+            <div>
+                <input 
+                type="number"
+                name="weight"
+                value="{{member.weight}}">
+            </div>
+        </div>
+        <div class="item">
+            <div>Altura (cm)</div>
+            <div>
+                <input 
+                type="number"
+                name="height"
+                value="{{member.height}}">
+            </div>
+        </div>
 
         <button type="submit">Salvar</button>

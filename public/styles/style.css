@@ -73,7 +73,7 @@ header {
 #card{
     background-color: white;
     width: 800px;
-    height: 600px;
+    height: 800px;
 
 /*space in the center of the page*/
 
@@ -206,7 +206,7 @@ a.button {
 /*INDEX INSTRUCTORS */
 .card{
     background-color: white;
-    width: 600px;
+    width: 800px;
     height: 600px;
     margin: 0 auto;
     position: absolute;
