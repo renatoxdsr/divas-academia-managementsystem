@@ -3,40 +3,11 @@ const fs = require('fs');
 //call a data.jason to know lose the sata
 const data = require('../data.json');
 //because it is an object you have to put in {}
-const {age, date} = require('../date')
+const {date} = require('../date')
 
 exports.index = function(req, res) {
 
     return res.render("instructors/index", {instructors : data.instructors})
-}
-//function to show(get something)
-exports.show = function(req, res) {
-    //req.params
-    const {id} = req.params;
-    
-    const foundInstructor = data.instructors.find(function(instructor){
-        return instructor.id == id
-    });
-
-    if (!foundInstructor) return res.send("Instructor not found")
-    
-    //creating a variale instructor 
-    const instructor = {
-        //spread Operator
-        ...foundInstructor,
-        //bring age function to be shown in instructors id page
-        age: age(foundInstructor.birth),
-        //print the name (masculine) instead of just "M"
-        //creating in nunjucks/html
-        gender: "",
-        //break the string in eanch ',' common appeared
-        services: foundInstructor.services.split(","),
-        //creating the date in datetimeformat 00/00/0000 
-        //Formatting date with Intl from Javascript
-        created_at: new Intl.DateTimeFormat("pt-BR").format(foundInstructor.created_at),
-
-    }
-    return res.render("instructors/show", {instructor})
 }
 //Function tpo CREATE
 exports.create = function(req, res) {
@@ -113,6 +84,35 @@ exports.post = function(req, res){
 
     return res.send(req.body)
 }
+//function to show(get something)
+exports.show = function(req, res) {
+    //req.params
+    const {id} = req.params;
+    
+    const foundInstructor = data.instructors.find(function(instructor){
+        return instructor.id == id
+    });
+
+    if (!foundInstructor) return res.send("Instructor not found")
+    
+    //creating a variale instructor 
+    const instructor = {
+        //spread Operator
+        ...foundInstructor,
+        //bring age function to be shown in instructors id page
+        age: age(foundInstructor.birth),
+        //print the name (masculine) instead of just "M"
+        //creating in nunjucks/html
+        gender: "",
+        //break the string in eanch ',' common appeared
+        services: foundInstructor.services.split(","),
+        //creating the date in datetimeformat 00/00/0000 
+        //Formatting date with Intl from Javascript
+        created_at: new Intl.DateTimeFormat("pt-BR").format(foundInstructor.created_at),
+
+    }
+    return res.render("instructors/show", {instructor})
+}
 //Function to edit
 exports.edit = function(req, res){
     //req.params //passando os parametros
@@ -126,7 +126,7 @@ exports.edit = function(req, res){
 
     const instructor = {
         ...foundInstructor,
-        birth: date(foundInstructor.birth)
+        birth: date(foundInstructor.birth).iso
     }
     
     
@@ -150,7 +150,7 @@ exports.put = function(req, res) {
         ...foundInstructor,
         ...req.body,
         birth: Date.parse(req.body.birth),
-        id: (Number.req.body.id)
+        id: Number(req.body.id)
     }
 
     data.instructors[index] = instructor

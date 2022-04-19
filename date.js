@@ -41,8 +41,15 @@ module.exports = {
         const day = `0${date.getUTCDate()}`.slice(-2)
 
         //return yyyy-mm-dd
-
-        return`${year}-${month}-${day}`
+        /* return`${year}-${month}-${day}` //type: ISO */
+        //return an object ISO to show just day & month
+        return {
+            day,
+            month,
+            year,
+            iso: `${year}-${month}-${day}`,
+            borthDay: `${day}/${month}`
+        }
 
 
     }

@@ -108,7 +108,7 @@ exports.show = function(req, res) {
         //spread Operator
         ...foundMember,
         //bring age function to be shown in members id page
-        age: age(foundMember.birth),
+        birth: date(foundMember.birth),
         //print the name (masculine) instead of just "M"
         //creating in nunjucks/html
         gender: "",
