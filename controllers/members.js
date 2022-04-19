@@ -135,7 +135,7 @@ exports.edit = function(req, res){
 
     const member = {
         ...foundMember,
-        birth: date(foundMember.birth)
+        birth: date(foundMember.birth).iso
     }
     
     
@@ -159,7 +159,7 @@ exports.put = function(req, res) {
         ...foundMember,
         ...req.body,
         birth: Date.parse(req.body.birth),
-        id: (Number.req.body.id)
+        id: Number(req.body.id)
     }
 
     data.members[index] = member
