@@ -1,96 +1,97 @@
 <div class="item">
-            <div>Avatar URL</div>
-            <div>
-                <input 
-                type="url" 
-                name="avatar_url"
-                placeholder="http://"
-                {# Creating value, to feel the placeholder #}
-                value="{{member.avatar_url}}">
-            </div>
+    <div>Avatar URL</div>
+        <div>
+            <input 
+            type="url" 
+            name="avatar_url"
+            placeholder="http://"
+            {# Creating value, to feel the placeholder #}
+            value="{{member.avatar_url}}">
         </div>
-        <div class="item">
-            <div>Nome</div>
-            <div>
-                <input 
-                type="text" 
-                name="name"
-                placeholder="nome e sobrenome"
-                value="{{member.name}}">
-            </div>
+    </div>
+    <div class="item">
+        <div>Nome</div>
+        <div>
+            <input 
+            type="text" 
+            name="name"
+            placeholder="nome e sobrenome"
+            value="{{member.name}}">
         </div>
+    </div>
 
-        <div class="item">
-            <div>Email</div>
-            <div>
-                <input 
-                type="text" 
-                name="email"
-                placeholder="email@domain.com"
-                value="{{member.email}}">
-            </div>
+    <div class="item">
+        <div>Email</div>
+        <div>
+            <input 
+            type="text" 
+            name="email"
+            placeholder="email@domain.com"
+            value="{{member.email}}">
         </div>
+    </div>
 
-        <div class="item">
-            <div>Data de Nascimento</div>
-            <div>
-                <input 
-                type="date"
-                name="birth"
-                value="{{member.birth}}">
-            </div>
+    <div class="item">
+        <div>Data de Nascimento</div>
+        <div>
+            <input 
+            type="date"
+            name="birth"
+            value="{{member.birth}}">
         </div>
+    </div>
 
-        <div class="item">
-            <div>Sexo</div>
-            <div>
-                <span><input type="radio"
-                name="gender" value="M" 
-                {% if member.gender == "M"%}
-                checked
-                {% endif %}>
-                Masculino</span>
-                <span><input type="radio"
-                name="gender" value="F"
-                {% if member.gender == "F"%}
-                checked
-                {% endif %}
-                >Feminino</span>
+    <div class="item">
+        <div>Sexo</div>
+        <div>
+            <span><input type="radio"
+            name="gender" value="M" 
+            {% if member.gender == "M"%}
+            checked
+            {% endif %}>
+            Masculino</span>
+            <span><input type="radio"
+            name="gender" value="F"
+            {% if member.gender == "F"%}
+            checked
+            {% endif %}
+            >Feminino</span>
 
-            </div>
         </div>
-        <div class="item">
-            <div>Tipo Sanguineo</div>
-            <div>
-                <select name="blood" id="">
-                    <option value="A+">A+</option>
-                    <option value="A-">A-</option>
-                    <option value="B+">B+</option>
-                    <option value="B-">B-</option>
-                    <option value="AB+">AB+</option>
-                    <option value="AB-">AB-</option>
-                    <option value="O+">O+</option>
-                    <option value="O-">O-</option>
-                </select>
-            </div>
+    </div>
+    <div class="item">
+        <div>Tipo Sanguineo</div>
+        <div>
+            <select name="blood" id="">
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
         </div>
-        <div class="item">
-            <div>Peso (kg)</div>
-            <div>
-                <input 
-                type="number"
-                name="weight"
-                value="{{member.weight}}">
-            </div>
+    </div>
+    <div class="item">
+        <div>Peso (kg)</div>
+        <div>
+            <input 
+            type="number"
+            name="weight"
+            value="{{member.weight}}">
         </div>
-        <div class="item">
-            <div>Altura (cm)</div>
-            <div>
-                <input 
-                type="number"
-                name="height"
-                value="{{member.height}}">
-            </div>
+    </div>
+    <div class="item">
+        <div>Altura (cm)</div>
+        <div>
+            <input 
+            type="number"
+            name="height"
+            value="{{member.height}}">
         </div>
+    </div>
 
-        <button type="submit">Salvar</button>
+    <button type="submit">Salvar</button>
+<div>
