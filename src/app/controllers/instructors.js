@@ -1,72 +1,42 @@
 
 //because it is an object you have to put in {}
-const {date} = require('../../lib/date')
-const db = require('../../config/db')
+const Instructor = require('../models/instructor')
 
 module.exports = {
-    index: function(req, res) {
-        db.query('SELECT * FROM instructors', function(err, results){
-            if(err) return res.send("Database Error!")
-
-            return res.render("instructors/index", {instructors : results.rows})
+    index(req, res) {
+        Instructor.all(function(instructors) {
+            return res.render("instructors/index", {instructors})
         })
         
     },
-    create: function(req,res){
+    create(req,res){
         return res.render('instructors/create')
     },
-    post: function(req,res){
+    post(req,res){
     //creating a constructor
     //here was made the validation
-    const keys = Object.keys(req.body)
+        const keys = Object.keys(req.body)
     //validation if all the blanks are filled
     // to send to DB
     //here was made the validation
-    for(key of keys){
-      if (req.body[key]== ""){
-        return res.send('Please, fill all the fileds')
-    }} 
+        for(key of keys){
+        if (req.body[key]== ""){
+            return res.send('Please, fill all the fileds')
+        }} 
     
-    
-    //using let because it allows to change the value in the next variables
-    let {avatar_url, birth, name, services, gender} = req.body
-
-    //Instructions to sql 
-    const query = `
-        INSERT INTO instructors (
-            name,
-            avatar_url,
-            birth,
-            gender,
-            services,
-            created_at
-        ) VALUES ($1, $2, $3, $4, $5, $6)
-        RETURNING id
-    `
-
-    const values = [
-        req.body.name,
-        req.body.avatar_url,
-        date(req.body.birth).iso,
-        req.body.gender,
-        req.body.services,
-        date(Date.now()).iso
-    ]    
-
-    db.query(query, values, function(err, results){
-        if(err) return res.send("Database Error!")
+        Instructor.create(req.body, function(instructor){
+            return res.redirect(`/instructors/${instructor.id}`)
+        })
         
-        return res.redirect(`/instructors/${results.rows[0].id}`)
-    })
     
     },
-    show: function(req,res){
+    show(req,res){
         return
     },
-    edit: function(req, res){
+    edit(req, res){
         return
     },
-    put:function(req,res) {
+    put(req,res) {
         //creating a constructor
     //here was made the validation
     const keys = Object.keys(req.body)
@@ -80,7 +50,7 @@ module.exports = {
 
         return
     },
-    delete:function(req,res){
+    delete(req,res){
         return
     }
 }
