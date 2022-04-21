@@ -31,7 +31,7 @@ module.exports = {
     
     },
     show(req, res){
-        
+
         Instructor.find(req.params.id, function(instructor){
             if(!instructor) return res.send("Instructor not found!")
             instructor.age = age(instructor.birth)
@@ -63,7 +63,9 @@ module.exports = {
         return res.send('Please, fill all the fileds')
     }} 
 
-        return
+        Instructor.update(req.body, function(){
+            return res.redirect(`/instructors/${req.body.id}`)
+        })
     },
     delete(req,res){
         return
