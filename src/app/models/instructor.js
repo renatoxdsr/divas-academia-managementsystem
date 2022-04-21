@@ -44,11 +44,11 @@ module.exports  = {
         db.query(`
             SELECT * 
             FROM instructors 
-            where id = $4`, 
+            where id=$4`, 
             [id], function(err, results){
                 if(err) throw `Database Error!${err}`
             
-                callback(results.rows[0])
+                return callback(results.rows[0])
             })
     },
     update(data, callback){
@@ -72,9 +72,19 @@ module.exports  = {
         ]
 
         db.query(query, values, function(err, results){
-            if(err) throw ("Database Error!")
+            if(err) throw `Database Error!${err}`
             
-            callback()
+            return callback()
+        })
+    },
+    delete(id, callback){
+        db.query(`
+        DELETE 
+        FROM instructors 
+        Where id=$1`, [id], 
+        function(err, results){
+            if(err) throw `Database Error!${err}`
+            return callback()
         })
     }
 }
