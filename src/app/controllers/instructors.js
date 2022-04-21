@@ -1,4 +1,4 @@
-
+const {age, date} = require('../../lib/date')
 //because it is an object you have to put in {}
 const Instructor = require('../models/instructor')
 
@@ -30,11 +30,26 @@ module.exports = {
         
     
     },
-    show(req,res){
-        return
+    show(req, res){
+        
+        Instructor.find(req.params.id, function(instructor){
+            if(!instructor) return res.send("Instructor not found!")
+            instructor.age = age(instructor.birth)
+            instructor.services = instructor.services.split(",")
+
+            instructor.created_at = date(instructor.created_at).format
+
+            return res.render("instructors/show", {instructor})
+        })
+        
     },
     edit(req, res){
-        return
+        Instructor.find(req.params.id, function(instructor){
+            if(!instructor) return res.send("Instructor not found!")
+            instructor.birth = date(instructor.birth).iso
+
+            return res.render("instructors/edit", {instructor})
+        })
     },
     put(req,res) {
         //creating a constructor

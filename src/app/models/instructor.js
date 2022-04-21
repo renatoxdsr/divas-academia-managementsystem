@@ -12,31 +12,44 @@ module.exports  = {
     },
     create(data, callback) {
     //Instructions to sql 
-    const query = `
-        INSERT INTO instructors (
-            name,
-            avatar_url,
-            birth,
-            gender,
-            services,
-            created_at
-        ) VALUES ($1, $2, $3, $4, $5, $6)
-        RETURNING id
-    `
+        const query = `
+            INSERT INTO instructors (
+                name,
+                avatar_url,
+                birth,
+                gender,
+                services,
+                created_at
+            ) VALUES ($1, $2, $3, $4, $5, $6)
+            RETURNING id
+        `
 
-    const values = [
-        data.name,
-        data.avatar_url,
-        date(data.birth).iso,
-        data.gender,
-        data.services,
-        date(Date.now()).iso
-    ]    
+        const values = [
+            data.name,
+            data.avatar_url,
+            date(data.birth).iso,
+            data.gender,
+            data.services,
+            date(Date.now()).iso
+        ]    
 
-    db.query(query, values, function(err, results){
-        if(err) return res.send("Database Error!")
-        
-        callback(results.rows[0])
-    })
+        db.query(query, values, function(err, results){
+            if(err) return res.send("Database Error!")
+            
+            callback(results.rows[0])
+        })
+    },
+
+    find(id, callback){
+        db.query(`
+            SELECT * 
+            FROM instructors 
+            where id = $5`, 
+            [id], function(err, results){
+                if(err) return res.send("Database Error!")
+            
+                callback(results.rows[0])
+            })
     }
 }
+    
