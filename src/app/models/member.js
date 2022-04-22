@@ -4,7 +4,7 @@ const db = require('../../config/db')
 module.exports  = {
     all(callback) {
 
-        db.query('SELECT * FROM instructors', function(err, results){
+        db.query('SELECT * FROM members', function(err, results){
             if(err) throw ("Database Error!")
 
             callback(results.rows)
@@ -13,24 +13,28 @@ module.exports  = {
     create(data, callback) {
     //Instructions to sql 
         const query = `
-            INSERT INTO instructors (
+            INSERT INTO members (
                 name,
                 avatar_url,
+                email,
                 birth,
                 gender,
-                services,
-                created_at
-            ) VALUES ($1, $2, $3, $4, $5, $6)
+                blood,
+                height,
+                weight
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
             RETURNING id
         `
 
         const values = [
             data.name,
             data.avatar_url,
+            data.email,
             date(data.birth).iso,
             data.gender,
-            data.services,
-            date(Date.now()).iso
+            data.blood,
+            data.height,
+            data.weight
         ]    
 
         db.query(query, values, function(err, results){
@@ -43,7 +47,7 @@ module.exports  = {
     find(id, callback){
         db.query(`
             SELECT * 
-            FROM instructors 
+            FROM members 
             where id=$1`, 
             [id], function(err, results){
                 if(err) throw `Database Error!${err}`
@@ -53,12 +57,15 @@ module.exports  = {
     },
     update(data, callback){
         const query = `
-        UPDATE instructors SET
+        UPDATE members SET
             name=($1),
             avatar_url=($2),
-            birth=($3),
-            gender=($4),
-            services=($5)
+            email=($4),
+            birth=($4),
+            gender=($5),
+            blood=($6),
+            height=($7),
+            weight=($8)
         WHERE id=$4
         `
 
@@ -80,7 +87,7 @@ module.exports  = {
     delete(id, callback){
         db.query(`
         DELETE 
-        FROM instructors 
+        FROM members 
         Where id=$1`, [id], 
         function(err, results){
             if(err) throw `Database Error!${err}`
