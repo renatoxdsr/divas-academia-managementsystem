@@ -1,5 +1,6 @@
 const {age, date} = require('../../lib/date')
 const db = require('../../config/db')
+const instructor = require('./instructor')
 
 module.exports  = {
     all(callback) {
@@ -93,6 +94,17 @@ module.exports  = {
             if(err) throw `Database Error!${err}`
             return callback()
         })
+    },
+    instructorsSelectOption(callback){
+        db.query(
+            `SELECT name,
+            id FROM instructors` ,
+            function(err, results) {
+                if (err) throw 'Database ERROR!'
+
+                callback(results.rows)
+            }
+        )
     }
 }
     
