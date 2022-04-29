@@ -22,8 +22,9 @@ module.exports  = {
                 gender,
                 blood,
                 height,
-                weight
-            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+                weight,
+                instructor_id
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
             RETURNING id
         `
 
@@ -35,7 +36,8 @@ module.exports  = {
             data.gender,
             data.blood,
             data.height,
-            data.weight
+            data.weight,
+            data.instructor
         ]    
 
         db.query(query, values, function(err, results){
@@ -47,13 +49,14 @@ module.exports  = {
 
     find(id, callback){
         db.query(`
-            SELECT * 
+            SELECT members.*, instructors.name AS instructor_name 
             FROM members 
-            where id=$1`, 
+            LEFT JOIN instructors ON (members.instructor_id = instructors.id)
+            WHERE members.id=$1`, 
             [id], function(err, results){
-                if(err) throw `Database Error!${err}`
+                if(err) throw `Database Error! ${err}`
             
-                return callback(results.rows[0])
+                callback(results.rows[0])
             })
     },
     update(data, callback){
@@ -67,7 +70,8 @@ module.exports  = {
             blood=($6),
             height=($7),
             weight=($8)
-        WHERE id=$4
+            instructor_is=($9)
+        WHERE id=$10
         `
 
         const values = [
@@ -75,7 +79,10 @@ module.exports  = {
             data.avatar_url,
             date(data.birth).iso,
             data.gender,
-            data.services,
+            data.email,
+            data.weight,
+            data.height,
+            data.instructor,
             data.id
         ]
 
