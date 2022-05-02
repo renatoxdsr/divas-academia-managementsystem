@@ -32,35 +32,35 @@ for (item of menuItems) {
 //totalPages = 20
 // selectedPage = 6
 //[1, ...,13, 14, 15, 16, 17,... 20]
-
-let totalPages = 20,
-    selectedPage = 16,
-    //array
-    pages = [],
-    oldPage
-
-for(let currentPage = 1; currentPage <= totalPages; currentPage++){
-
-    const firstandLastPage = currentPage == 1 || currentPage == totalPages
-    const pagesAfterSelectedPage = currentPage <= selectedPage + 2
+function pagination(selectedPage, totalPages){
     
-    const pagesBeforeSelectedPage = currentPage >= selectedPage - 2
+    let totalPages = 20,
+        selectedPage = 16,
+        //array
+        pages = [],
+        oldPage
 
-    if(firstandLastPage || pagesAfterSelectedPage && pagesBeforeSelectedPage){
-        
+    for(let currentPage = 1; currentPage <= totalPages; currentPage++){
 
-        if(oldPage && currentPage - oldPage > 2){
-            pages.push("...")
+        const firstandLastPage = currentPage == 1 || currentPage == totalPages
+        const pagesAfterSelectedPage = currentPage <= selectedPage + 2
+        const pagesBeforeSelectedPage = currentPage >= selectedPage - 2
+
+        if(firstandLastPage || pagesAfterSelectedPage && pagesBeforeSelectedPage){
+            
+
+            if(oldPage && currentPage - oldPage > 2){
+                pages.push("...")
+            }
+
+            if(oldPage && currentPage - oldPage == 2){
+                pages.push(oldPage + 1)
+            }
+            pages.push(currentPage)
+
+            oldPage = currentPage
         }
-
-        if(oldPage && currentPage - oldPage == 2){
-            pages.push(oldPage +1)
-        }
-        pages.push(currentPage)
-
-        oldPage = currentPage
     }
+
+    console.log(pages)
 }
-
-console.log(pages)
-

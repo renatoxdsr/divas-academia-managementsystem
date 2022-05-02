@@ -17,11 +17,17 @@ module.exports = {
             limit,
             offset,
             callback(instructors){
+
+                const pagination = {
+                    filter,
+                    total,
+                    page
+                }
                 return res.render("instructors/index", { instructors, filter})
             }
         }
 
-        Instructor.paginate(params, )
+        Instructor.paginate(params)
 
         /*  if(filter){
             Instructor.findBy(filter, function(instructors){
