@@ -42,11 +42,11 @@ function pagination(selectedPage, totalPages){
 
     for(let currentPage = 1; currentPage <= totalPages; currentPage++){
 
-        const firstandLastPage = currentPage == 1 || currentPage == totalPages
+        const firstAndLastPage = currentPage == 1 || currentPage == totalPages
         const pagesAfterSelectedPage = currentPage <= selectedPage + 2
         const pagesBeforeSelectedPage = currentPage >= selectedPage - 2
 
-        if(firstandLastPage || pagesAfterSelectedPage && pagesBeforeSelectedPage){
+        if(firstAndLastPage || pagesAfterSelectedPage && pagesBeforeSelectedPage){
             
 
             if(oldPage && currentPage - oldPage > 2){
