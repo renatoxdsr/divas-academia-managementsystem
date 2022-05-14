@@ -307,3 +307,32 @@ tbody tr td:last-child a, .table-container > a{
 .table-container .header form button {
     margin: 0;
 }
+
+/*PAGINATION*/
+
+.table-container{
+    display: grid;
+}
+
+.table-container .header {
+    margin: 0;
+}
+
+.table-container .pagination {
+    margin: 0;
+    align-self: end;
+    justify-self: center;
+}
+
+.pagination a,
+.pagination span{
+    color:var(--primary-color);
+    font-weight: bolder;
+    text-decoration: none;
+    margin-right: 16px;
+}
+
+.pagination a:hover {
+    filter: brightness(0.3);
+    border-bottom: 1px solid var(--primary-color);
+}

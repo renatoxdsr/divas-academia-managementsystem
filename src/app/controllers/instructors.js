@@ -19,9 +19,8 @@ module.exports = {
             callback(instructors){
 
                 const pagination = {
-                    filter,
                     //arredondar para cima - Math.ceil - de ceiling UP
-                    total : Math.ceil(instructors[0].total / limit),
+                    total: Math.ceil(instructors[0].total/limit),
                     page
                 }
                 return res.render("instructors/index", { instructors, pagination, filter})

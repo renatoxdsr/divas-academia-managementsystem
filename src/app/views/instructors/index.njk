@@ -11,6 +11,7 @@
                 input="text"
                 name="filter"
                 placeholder="Nome ou atendimento"
+                value={{filter}}
             >
             <button type="submit">Filtrar</button>
         </form>
@@ -41,9 +42,11 @@
         </tbody>
     </table>
 
-    <div class="pagination" dat-page={{pagination.page}}
-    data-total={{pagination.total}}>
-
+    <div class="pagination" 
+    data-page={{pagination.page}}
+    data-total={{pagination.total}}
+    data-filter={{filter}}
+    >
     </div>
 </div>
 
